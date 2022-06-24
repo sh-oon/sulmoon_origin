@@ -1,7 +1,6 @@
 <template>
-  <div class="w-full h-screen">
+  <div class="w-full h-screen bg-gradient-to-r from-indigo-300 to-purple-300 bg-opacity-5">
     <Header/>
-    <span class="font-bold">asdfasdf</span>
 <!--    <Contents/>-->
 <!--    <Footer/>-->
   </div>
