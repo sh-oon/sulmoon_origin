@@ -14,7 +14,7 @@ export default defineConfig({
     port: 3000,
     proxy:{
       '/api':{
-        target: 'http://192.168.1.23:8080/',
+        target: '주소 감추기 신공',
         changeOrigin:true,
         ws: false,
         secure: false
