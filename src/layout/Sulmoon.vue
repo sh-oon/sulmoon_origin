@@ -2,19 +2,22 @@
   <div class="content mt-4 shadow-down relative flex flex-col gap-y-2 items-end">
     <form class="content full gap-4 flex flex-col">
       <label for="name">
-        <span>이름</span>
+        <span class="block w-3/12">이름</span>
         <input type="text" id="name" placeholder="이름을 입력해주세요" v-model="param.name">
       </label>
       <label for="nickname">
-        <span>단톡방 닉네임</span>
+        <span class="w-3/12">단톡방 닉네임</span>
         <input type="text" id="nickname" placeholder="오픈채팅방 닉네임을 입력해주세요" v-model="param.email">
       </label>
       <label for="phone">
-        <span>전화번호</span>
+        <span class="w-3/12">전화번호</span>
         <input type="text" id="phone" placeholder="'-'없이 입력해주세요 ex) 01012341234" v-model="param.phone">
       </label>
       <label for="email">
-        <span>이메일</span>
+        <div class="w-3/12 flex flex-col">
+          <span>이메일</span>
+          <span class="text-[10px]">* gmail로 입력해주세요</span>
+        </div>
         <input type="text" id="email" placeholder="example@gmail.com" v-model="param.email">
       </label>
       <div class="flex items-center gap-x-2">
@@ -59,9 +62,6 @@ const submit = () => {
 
 label {
   @apply flex items-center gap-1
-}
-span {
-  @apply w-3/12 block
 }
 input[type="text"] {
   @apply p-2
