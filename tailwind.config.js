@@ -5,8 +5,8 @@ module.exports = {
   theme: {
     extend: {},
     boxShadow:{
-      'up':'0 -3px 15px lightgray',
-      'down':'0 3px 15px lightgray'
+      'up':'0 -5px 15px lightgray',
+      'down':'0 5px 15px lightgray'
     },
   },
   variants: {
