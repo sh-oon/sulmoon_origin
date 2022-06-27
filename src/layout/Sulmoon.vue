@@ -11,14 +11,14 @@
       </label>
       <label for="phone">
         <span class="w-3/12">전화번호</span>
-        <input type="text" id="phone" placeholder="'-'없이 입력해주세요 ex) 01012341234" v-model="param.phone">
+        <input type="text" inputmode="numeric" id="phone" placeholder="'-'없이 입력해주세요 ex) 01012341234" v-model="param.phone">
       </label>
       <label for="email">
         <div class="w-3/12 flex flex-col">
           <span>이메일</span>
           <span class="text-[10px]">* gmail로 입력해주세요</span>
         </div>
-        <input type="text" id="email" placeholder="example@gmail.com" v-model="param.email">
+        <input type="text" inputmode="email" id="email" placeholder="example@gmail.com" v-model="param.email">
       </label>
       <div class="flex items-center gap-x-2">
         <span class="w-3/12">참여장소</span>
