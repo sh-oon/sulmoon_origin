@@ -2,33 +2,33 @@
   <div class="content mt-4 shadow-down relative flex flex-col gap-y-2 items-end">
     <form class="sulmoon gap-4 flex flex-col">
       <label for="name">
-        <span class="block w-3/12">이름</span>
-        <input type="text" id="name" placeholder="이름을 입력해주세요" v-model="param.name">
+        <span class="block w-3/12 text-sm">이름</span>
+        <input type="text" id="name" class="placeholder:text-sm" placeholder="이름을 입력해주세요" v-model="param.name">
       </label>
       <label for="nickname">
-        <span class="w-3/12">단톡방 닉네임</span>
-        <input type="text" id="nickname" placeholder="오픈채팅방 닉네임을 입력해주세요" v-model="param.email">
+        <span class="block w-3/12 text-sm">단톡방 닉네임</span>
+        <input type="text" id="nickname" class="placeholder:text-sm" placeholder="오픈채팅방 닉네임을 입력해주세요" v-model="param.email">
       </label>
       <label for="phone">
-        <span class="w-3/12">전화번호</span>
-        <input type="text" id="phone" placeholder="'-'없이 입력해주세요 ex) 01012341234" v-model="param.phone">
+        <span class="block w-3/12 text-sm">전화번호</span>
+        <input type="text" id="phone" class="placeholder:text-sm" placeholder="'-'없이 입력해주세요 ex) 01012341234" v-model="param.phone">
       </label>
       <label for="email">
         <div class="w-3/12 flex flex-col">
-          <span>이메일</span>
+          <span class="block text-sm">이메일</span>
           <span class="text-[10px]">* gmail로 입력해주세요</span>
         </div>
-        <input type="text" id="email" placeholder="example@gmail.com" v-model="param.email">
+        <input type="text" id="email" class="placeholder:text-sm" placeholder="example@gmail.com" v-model="param.email">
       </label>
       <div class="flex items-center gap-x-2">
-        <span class="w-3/12">참여장소</span>
+        <span class="block w-3/12 text-sm">참여장소</span>
         <div class="w-9/12 flex gap-4">
           <label for="online">
-            <span class="block">온라인</span>
+            <span class="block text-sm">온라인</span>
             <input type="radio" value="online" name="location" id="online" v-model="param.location">
           </label>
           <label for="offline">
-            <span class="block">오프라인</span>
+            <span class="block text-sm">오프라인</span>
             <input type="radio" value="offline" name="location" id="offline" v-model="param.location">
           </label>
         </div>
@@ -67,4 +67,5 @@ label {
 input[type="text"] {
   @apply p-2 w-9/12
 }
+
 </style>
