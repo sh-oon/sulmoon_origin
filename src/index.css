@@ -1,3 +1,7 @@
 .content {
-    @apply w-full md:w-1/2 bg-white rounded-3xl p-4 bg-opacity-70
+  @apply w-full md:w-1/2 bg-white rounded-3xl p-4 bg-opacity-70
+}
+
+.sulmoon {
+  @apply w-full bg-white rounded-3xl p-4 bg-opacity-70
 }

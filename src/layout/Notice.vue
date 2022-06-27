@@ -1,5 +1,5 @@
 <template>
-  <div class="content shadow-down mt-4 flex flex-col">
+  <div class="content xs:w-full shadow-down mt-4 flex flex-col">
     <div class="flex flex-col">
       <h2>안녕하세요</h2>
       <span>프론트엔드 컨퍼런스 추진 위원회 입니다</span>

@@ -14,6 +14,9 @@ module.exports = {
       backgroundColor:['checked'],
       boxShadow: ['active'],
     },
+    screens: {
+      'xs': '576px',
+    }
   },
   plugins: [
       require('@tailwindcss/line-clamp'),
