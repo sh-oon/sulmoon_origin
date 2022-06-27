@@ -1,6 +1,6 @@
 <template>
-  <Header/>
-  <div class="w-full h-screen bg-gradient-to-r from-indigo-300 to-purple-300 bg-opacity-5 flex flex-col items-center">
+  <div class="w-full pb-20 bg-gradient-to-r from-blue-300 to-purple-400 bg-opacity-5 flex flex-col items-center">
+    <Header/>
     <Notice/>
     <Sulmoon/>
   </div>
