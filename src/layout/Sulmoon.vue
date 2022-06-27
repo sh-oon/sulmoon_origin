@@ -64,6 +64,6 @@ label {
   @apply flex items-center gap-1
 }
 input[type="text"] {
-  @apply p-2
+  @apply p-2 w-9/12
 }
 </style>

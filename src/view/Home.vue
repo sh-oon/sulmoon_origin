@@ -3,7 +3,6 @@
   <div class="w-full h-screen bg-gradient-to-r from-indigo-300 to-purple-300 bg-opacity-5 flex flex-col items-center">
     <Notice/>
     <Sulmoon/>
-<!--    <Footer/>-->
   </div>
 </template>
 
