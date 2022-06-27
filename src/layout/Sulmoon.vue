@@ -50,6 +50,7 @@ const param = reactive({
   location: null
 })
 
+// 요기다 짜세용
 const submit = () => {
   console.log(param)
 }
