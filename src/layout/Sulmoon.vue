@@ -11,7 +11,7 @@
           class="placeholder:text-sm"
           placeholder="이름을 입력해주세요"
           v-model="param.name"
-          @change="searchChangeFunc($event)"
+          @change="searchChangeFunc"
         />
       </label>
       <label for="nickname">
@@ -22,7 +22,7 @@
           class="placeholder:text-sm"
           placeholder="오픈채팅방 닉네임을 입력해주세요"
           v-model="param.nickname"
-          @change="searchChangeFunc($event)"
+          @change="searchChangeFunc"
         />
       </label>
       <label for="phone">
@@ -34,7 +34,7 @@
           class="placeholder:text-sm"
           placeholder="'-'없이 입력해주세요 ex) 01012341234"
           v-model="param.phone"
-          @change="searchChangeFunc($event)"
+          @change="searchChangeFunc"
         />
       </label>
       <label for="email">
@@ -48,7 +48,7 @@
           class="placeholder:text-sm email !w-1/3"
           placeholder="ID"
           v-model="param.email"
-          @change="searchChangeFunc($event)"
+          @change="searchChangeFunc"
         />
         <span>@gmail.com</span>
       </label>
@@ -64,7 +64,7 @@
                 name="location"
                 id="online"
                 v-model="param.location.online"
-                @change="searchChangeFunc($event)"
+                @change="searchChangeFunc"
               />
             </label>
             <label>
@@ -75,7 +75,7 @@
                 name="location"
                 id="offline"
                 v-model="param.location.offline"
-                @change="searchChangeFunc($event)"
+                @change="searchChangeFunc"
               />
             </label>
           </div>
@@ -83,7 +83,7 @@
         </div>
       </div>
     </form>
-    <button class="content disabled !w-20" ref="submit" @click="handleSubmit">
+    <button class="content !w-20" :class="{'disabled': submit}" :disabled="submit" @click="handleSubmit">
       제출
     </button>
   </div>
@@ -105,9 +105,9 @@ const param = reactive({
     offline: false,
   },
 });
-const submit = ref(null)
+const submit = ref(true)
 
-const searchChangeFunc = (e) =>{
+const searchChangeFunc = () =>{
   const disabled = (()=>{
     if(param.name === "") return true;
     if(param.nickname === "") return true;
@@ -116,13 +116,13 @@ const searchChangeFunc = (e) =>{
     if(!param.location.online && !param.location.offline) return true;
     return false;
   })()
-  console.log(disabled)
-  submit.value.disabled = disabled;
+  submit.value = disabled;
 }
 
 
 const handleSubmit = throttle( async () => {
-  submit.value.disabled = true;
+  console.log(submit.value)
+  submit.value = true
   const deadLine = new Date("2022-07-6T23:59:59").valueOf();
   const today = new Date();
   if (deadLine < today.valueOf()) {
@@ -153,6 +153,7 @@ const handleSubmit = throttle( async () => {
     }).then(() => {
       searchChangeFunc();
     });
+    submit.value = false
   }catch(e){
       Swal.fire({
         title: `신청이 되지 않았습니다.\n지속된다면 컨퍼런스 운영진에게 연락주세요.`,
@@ -171,5 +172,9 @@ label {
 
 input[type="text"] {
   @apply p-2 w-9/12 rounded-xl;
+}
+
+.disabled {
+  @apply text-[#888888] bg-gray-300
 }
 </style>
