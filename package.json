@@ -9,10 +9,12 @@
   },
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.3.1",
-    "vue": "^3.2.25",
-    "axios": "^0.24.0",
+    "axios": "^0.27.2",
+    "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
-    "vue-router": "^4.0.12"
+    "vue": "^3.2.25",
+    "vue-router": "^4.0.12",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
