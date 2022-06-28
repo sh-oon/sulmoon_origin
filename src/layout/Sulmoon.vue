@@ -90,8 +90,8 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import {Swal} from "sweetalert2"
+import { ref, reactive } from "vue";
+import { Swal } from "sweetalert2";
 import { throttle } from "lodash";
 const param = reactive({
   name: null,
@@ -103,40 +103,39 @@ const param = reactive({
     offline: false,
   },
 });
-const submit = ref(null)
+const submit = ref(null);
 
-const searchChangeFunc = () =>{
-  const disabled = (()=>{
-    if(param.name === "") return true;
-    if(param.nickname === "") return true;
-    if(param.phone === "") return true;
-    if(param.email === "") return true;
-    if(!param.location.online && !param.location.offline) return true;
+const searchChangeFunc = () => {
+  const disabled = (() => {
+    if (param.name === "") return true;
+    if (param.nickname === "") return true;
+    if (param.phone === "") return true;
+    if (param.email === "") return true;
+    if (!param.location.online && !param.location.offline) return true;
     return false;
-  })()
+  })();
   submit.value.disabled = disabled;
-}
+};
 
-
-const handleSubmit =throttle( async () => {
+const handleSubmit = throttle(async () => {
   submit.value.disabled = true;
   const deadLine = new Date("2022-07-6T23:59:59").valueOf();
   const today = new Date();
-  if (deadLine < today.valueOf()) {
-    Swal.fire("신청기간이 지났습니다.");
-    return;
-  }
+  //if (deadLine < today.valueOf()) {
+  //  Swal.fire("신청기간이 지났습니다.");
+  //  return;
+  //}
 
   const data = {
-    timeStamp: today.toLocaleString();
+    timeStamp: today.toLocaleString(),
     name: param.name,
     nickname: param.nickname,
     phone: param.phone,
     email: `${param.email}@gmail.com`,
-    online: param.location.online? "✓":"",
-    offline: param.location.offline? "✓":"",
+    online: param.location.online ? "✓" : "",
+    offline: param.location.offline ? "✓" : "",
   };
-  try{
+  try {
     await axios.get(
       "https://script.google.com/macros/s/AKfycbyVl3fRUlQ5WeJQ-EwXie7Hcuxel_9QF5pTDsvAFpcQSvPnyhsT5i_ZM-XfYVqsI9HE0Q/exec",
       {
@@ -150,15 +149,15 @@ const handleSubmit =throttle( async () => {
     }).then(() => {
       searchChangeFunc();
     });
-  }catch(e){
-      Swal.fire({
-        title: `신청이 되지 않았습니다.\n지속된다면 컨퍼런스 운영진에게 연락주세요.`,
-        icon: "error",
-      }).then(() => {
-        searchChangeFunc();
-      });
+  } catch (e) {
+    Swal.fire({
+      title: `신청이 되지 않았습니다.\n지속된다면 컨퍼런스 운영진에게 연락주세요.`,
+      icon: "error",
+    }).then(() => {
+      searchChangeFunc();
+    });
   }
-},100);
+}, 100);
 </script>
 
 <style scoped>
