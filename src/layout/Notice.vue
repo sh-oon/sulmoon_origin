@@ -7,9 +7,6 @@
       <span class="text-sm flex">기다려 주신 만큼 모든 인원을 수용하고 싶었으나 공간, 비용, 시간 등의 제약으로 추첨을 통하여 선별을 진행할 예정입니다. </span>
       <span class="text-lg flex font-bold">아래 사항을 필히 숙지하신 뒤 신청 부탁드립니다.</span>
       <br>
-      <span class="font-bold text-xl">* 참가확정문자 수신후 24시간 내에 미입금시 기회는 예비참가자에게 넘어갈 예정입니다</span>
-      <span class="font-bold text-xl">입금기한 꼭 확인해 주세요</span>
-      <br>
       <span>오프라인 참가 안내</span>
       <span class="pl-4">&bull; 최대 정원: 15명</span>
       <span class="pl-4">&bull; 참가 비용: 5,000원</span>
@@ -28,8 +25,8 @@
       <span class="pl-4">&bull; 행사일로부터 3일이내: 불가</span>
       <br>
       <span class="font-bold">추가 공지사항</span>
-      <span class="pl-4 font-bold">&bull; 참가 확정문자 수신후 24시간 내 미입금시 참여기회는 다른 사람에게 양도됩니다.</span>
-      <span class="pl-4 font-bold">&bull; 중복 제출은 불가능 하며 이로 인한 불이익은 책임지지 않습니다.</span>
+      <span class="pl-4 font-bold">&bull; 참가 확정 문자 수신 후 24시간 내 미입금 시 참여 기회는 다른 사람에게 양도됩니다.</span>
+      <span class="pl-4 font-bold">&bull; 중복 제출은 불가능하며 이로 인한 불이익은 책임지지 않습니다.</span>
       <span class="pl-4 font-bold">&bull; 컨퍼런스 내용에 대한 공식적인 공개는 없을 예정입니다.</span>
       <br>
       <span>더욱 양질의 컨퍼런스를 위하여 사전 공지했던 바와 일부 달라진 점이 있습니다.</span>
