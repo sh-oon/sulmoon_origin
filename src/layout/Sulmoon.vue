@@ -11,7 +11,7 @@
           class="placeholder:text-sm"
           placeholder="이름을 입력해주세요"
           v-model="param.name"
-          @input="searchChangeFunc($event)"
+          @change="searchChangeFunc($event)"
         />
       </label>
       <label for="nickname">
@@ -22,7 +22,7 @@
           class="placeholder:text-sm"
           placeholder="오픈채팅방 닉네임을 입력해주세요"
           v-model="param.nickname"
-          @input="searchChangeFunc($event)"
+          @change="searchChangeFunc($event)"
         />
       </label>
       <label for="phone">
@@ -34,7 +34,7 @@
           class="placeholder:text-sm"
           placeholder="'-'없이 입력해주세요 ex) 01012341234"
           v-model="param.phone"
-          @input="searchChangeFunc($event)"
+          @change="searchChangeFunc($event)"
         />
       </label>
       <label for="email">
@@ -48,7 +48,7 @@
           class="placeholder:text-sm email !w-1/3"
           placeholder="ID"
           v-model="param.email"
-          @input="searchChangeFunc($event)"
+          @change="searchChangeFunc($event)"
         />
         <span>@gmail.com</span>
       </label>
@@ -64,7 +64,7 @@
                 name="location"
                 id="online"
                 v-model="param.location.online"
-                @input="searchChangeFunc($event)"
+                @change="searchChangeFunc($event)"
               />
             </label>
             <label>
@@ -75,7 +75,7 @@
                 name="location"
                 id="offline"
                 v-model="param.location.offline"
-                @input="searchChangeFunc($event)"
+                @change="searchChangeFunc($event)"
               />
             </label>
           </div>
@@ -90,9 +90,11 @@
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import {Swal} from "sweetalert2"
+import {reactive, ref} from "vue";
 import { throttle } from "lodash";
+import axios from "axios";
+import Swal from 'sweetalert2';
+
 const param = reactive({
   name: null,
   nickname: null,
@@ -105,7 +107,7 @@ const param = reactive({
 });
 const submit = ref(null)
 
-const searchChangeFunc = () =>{
+const searchChangeFunc = (e) =>{
   const disabled = (()=>{
     if(param.name === "") return true;
     if(param.nickname === "") return true;
@@ -114,21 +116,22 @@ const searchChangeFunc = () =>{
     if(!param.location.online && !param.location.offline) return true;
     return false;
   })()
+  console.log(disabled)
   submit.value.disabled = disabled;
 }
 
 
-const handleSubmit =throttle( async () => {
+const handleSubmit = throttle( async () => {
   submit.value.disabled = true;
   const deadLine = new Date("2022-07-6T23:59:59").valueOf();
   const today = new Date();
   if (deadLine < today.valueOf()) {
-    Swal.fire("신청기간이 지났습니다.");
+    await Swal.fire("신청기간이 지났습니다.");
     return;
   }
 
   const data = {
-    timeStamp: today.toLocaleString();
+    timeStamp: today.toLocaleString(),
     name: param.name,
     nickname: param.nickname,
     phone: param.phone,
