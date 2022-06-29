@@ -97,8 +97,6 @@
 <script setup>
 import { ref, reactive } from "vue";
 import { throttle } from "lodash";
-import axios from "axios";
-import Swal from "sweetalert2";
 
 const param = reactive({
   name: null,
@@ -110,7 +108,7 @@ const param = reactive({
     offline: false,
   },
 });
-const submit = ref(null);
+const submit = ref(true);
 
 const searchChangeFunc = () => {
   const disabled = (() => {
@@ -121,11 +119,11 @@ const searchChangeFunc = () => {
     if (!param.location.online && !param.location.offline) return true;
     return false;
   })();
-  submit.value.disabled = disabled;
+  submit.value = disabled;
 };
 
 const handleSubmit = throttle(async () => {
-  submit.value.disabled = true;
+  submit.value = true;
   const deadLine = new Date("2022-07-6T23:59:59").valueOf();
   const today = new Date();
   if (deadLine < today.valueOf()) {
@@ -143,8 +141,6 @@ const handleSubmit = throttle(async () => {
     offline: param.location.offline ? "✓" : "",
   };
   try {
-    console.log("test");
-    console.lo;
     await axios.get(
       "https://script.google.com/macros/s/AKfycbyVl3fRUlQ5WeJQ-EwXie7Hcuxel_9QF5pTDsvAFpcQSvPnyhsT5i_ZM-XfYVqsI9HE0Q/exec",
       {
