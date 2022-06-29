@@ -84,14 +84,12 @@
       </div>
     </form>
 
-    <label>
-      <a href="javascript:void(0)" @click="moveToAgree">
+    <div class="w-full flex items-center gap-2 justify-end">
+      <div @click="openModal('NoU')">
         개인정보 수집 동의(클릭 시 전문)
-      </a>
-      <input
-        type="checkbox"
-      />
-    </label>
+      </div>
+      <input type="checkbox" v-model="param.NoU"/>
+    </div>
 
     <button
         class="content !w-20"
@@ -110,6 +108,7 @@ import {throttle} from "lodash";
 import axios from "axios";
 import Swal from 'sweetalert2';
 import router from "@/router";
+import {openModal} from '@/store/modal-store.js';
 
 const param = reactive({
   name: null,
@@ -120,6 +119,7 @@ const param = reactive({
     online: false,
     offline: false,
   },
+  NoU: false
 });
 const submit = ref(true);
 
@@ -130,6 +130,7 @@ const searchChangeFunc = () => {
     if (param.phone === "") return true;
     if (param.email === "") return true;
     if (!param.location.online && !param.location.offline) return true;
+    if (!param.NoU) return true;
     return false;
   })();
   submit.value = disabled;

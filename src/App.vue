@@ -1,9 +1,13 @@
 <script setup>
 import 'normalize.css'
+import NoU from '@/components/NoU.vue'
 </script>
 
 <template>
   <router-view></router-view>
+  <div v-show="false">
+    <NoU></NoU>
+  </div>
 </template>
 
 <style>
@@ -15,6 +19,6 @@ import 'normalize.css'
 }
 
 html {
-  font-family: 'NanumSquareRound' !important;
+  font-family: 'NanumSquareRound';
 }
 </style>
