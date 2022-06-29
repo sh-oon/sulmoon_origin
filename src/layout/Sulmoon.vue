@@ -151,7 +151,7 @@ const handleSubmit = throttle(async () => {
     );
     Swal.fire({
       title: `신청완료!`,
-      text: "문의사항은 컨퍼런스 운영진에게 문의주세요.",
+      text: "추가 문의 사항은 컨퍼런스 운영진에게 연락해 주세요.",
       icon: "success",
     }).then(() => {
       searchChangeFunc();
@@ -159,7 +159,7 @@ const handleSubmit = throttle(async () => {
   } catch (e) {
     console.error(e);
     Swal.fire({
-      title: `신청이 되지 않았습니다.\n지속된다면 컨퍼런스 운영진에게 연락주세요.`,
+      title: `신청이 되지 않았습니다. 재시도 바랍니다. \n같은 문제가 반복된다면 컨퍼런스 운영진에게 연락해 주세요.`,
       icon: "error",
     }).then(() => {
       searchChangeFunc();
