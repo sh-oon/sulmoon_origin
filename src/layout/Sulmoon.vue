@@ -143,7 +143,6 @@ const handleSubmit = throttle(async () => {
     offline: param.location.offline ? "✓" : "",
   };
   try {
-    console.log(data)
     await axios.get(
         "https://script.google.com/macros/s/AKfycbyVl3fRUlQ5WeJQ-EwXie7Hcuxel_9QF5pTDsvAFpcQSvPnyhsT5i_ZM-XfYVqsI9HE0Q/exec",
         {
