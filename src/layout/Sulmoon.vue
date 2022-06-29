@@ -1,40 +1,40 @@
 <template>
   <div
-    class="content mt-4 drop-shadow-lg relative flex flex-col gap-y-2 items-end"
+      class="content mt-4 drop-shadow-lg relative flex flex-col gap-y-2 items-end"
   >
     <form class="sulmoon gap-4 flex flex-col">
       <label for="name">
         <span class="block w-3/12 text-sm">이름</span>
         <input
-          type="text"
-          id="name"
-          class="placeholder:text-sm"
-          placeholder="이름을 입력해주세요"
-          v-model="param.name"
-          @change="searchChangeFunc"
+            type="text"
+            id="name"
+            class="placeholder:text-sm"
+            placeholder="이름을 입력해주세요"
+            v-model="param.name"
+            @change="searchChangeFunc"
         />
       </label>
       <label for="nickname">
         <span class="block w-3/12 text-sm">단톡방 닉네임</span>
         <input
-          type="text"
-          id="nickname"
-          class="placeholder:text-sm"
-          placeholder="오픈채팅방 닉네임을 입력해주세요"
-          v-model="param.nickname"
-          @change="searchChangeFunc"
+            type="text"
+            id="nickname"
+            class="placeholder:text-sm"
+            placeholder="오픈채팅방 닉네임을 입력해주세요"
+            v-model="param.nickname"
+            @change="searchChangeFunc"
         />
       </label>
       <label for="phone">
         <span class="block w-3/12 text-sm">전화번호</span>
         <input
-          type="text"
-          id="phone"
-          inputmode="numeric"
-          class="placeholder:text-sm"
-          placeholder="'-'없이 입력해주세요 ex) 01012341234"
-          v-model="param.phone"
-          @change="searchChangeFunc"
+            type="text"
+            id="phone"
+            inputmode="numeric"
+            class="placeholder:text-sm"
+            placeholder="'-'없이 입력해주세요 ex) 01012341234"
+            v-model="param.phone"
+            @change="searchChangeFunc"
         />
       </label>
       <label for="email">
@@ -43,12 +43,12 @@
           <span class="text-[10px]">* gmail 아이디만 입력해주세요.</span>
         </div>
         <input
-          type="text"
-          id="email"
-          class="placeholder:text-sm email !w-1/3"
-          placeholder="ID"
-          v-model="param.email"
-          @change="searchChangeFunc"
+            type="text"
+            id="email"
+            class="placeholder:text-sm email !w-1/3"
+            placeholder="ID"
+            v-model="param.email"
+            @change="searchChangeFunc"
         />
         <span>@gmail.com</span>
       </label>
@@ -59,23 +59,23 @@
             <label>
               <span class="block text-sm">온라인</span>
               <input
-                type="checkbox"
-                value="online"
-                name="location"
-                id="online"
-                v-model="param.location.online"
-                @change="searchChangeFunc"
+                  type="checkbox"
+                  value="online"
+                  name="location"
+                  id="online"
+                  v-model="param.location.online"
+                  @change="searchChangeFunc"
               />
             </label>
             <label>
               <span class="block text-sm">오프라인</span>
               <input
-                type="checkbox"
-                value="offline"
-                name="location"
-                id="offline"
-                v-model="param.location.offline"
-                @change="searchChangeFunc"
+                  type="checkbox"
+                  value="offline"
+                  name="location"
+                  id="offline"
+                  v-model="param.location.offline"
+                  @change="searchChangeFunc"
               />
             </label>
           </div>
@@ -84,10 +84,10 @@
       </div>
     </form>
     <button
-      class="content !w-20"
-      :class="{'disabled': submit }"
-      :disabled="submit"
-      @click="handleSubmit"
+        class="content !w-20"
+        :class="{disabled: submit }"
+        :disabled="submit"
+        @click="handleSubmit"
     >
       제출
     </button>
@@ -95,8 +95,8 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
-import { throttle } from "lodash";
+import {ref, reactive} from "vue";
+import {throttle} from "lodash";
 import axios from "axios";
 import Swal from 'sweetalert2';
 
@@ -144,10 +144,10 @@ const handleSubmit = throttle(async () => {
   };
   try {
     await axios.get(
-      "https://script.google.com/macros/s/AKfycbyVl3fRUlQ5WeJQ-EwXie7Hcuxel_9QF5pTDsvAFpcQSvPnyhsT5i_ZM-XfYVqsI9HE0Q/exec",
-      {
-        params: data,
-      }
+        "https://script.google.com/macros/s/AKfycbyVl3fRUlQ5WeJQ-EwXie7Hcuxel_9QF5pTDsvAFpcQSvPnyhsT5i_ZM-XfYVqsI9HE0Q/exec",
+        {
+          params: data,
+        }
     );
     Swal.fire({
       title: `신청완료!`,
