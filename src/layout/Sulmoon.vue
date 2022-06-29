@@ -88,7 +88,7 @@
       <div @click="openModal('NoU')">
         개인정보 수집 동의(클릭 시 전문)
       </div>
-      <input type="checkbox" v-model="param.NoU"/>
+      <input type="checkbox" v-model="param.NoU" @change="searchChangeFunc"/>
     </div>
 
     <button
