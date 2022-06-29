@@ -10,7 +10,7 @@
             id="name"
             class="placeholder:text-sm"
             placeholder="이름을 입력해주세요"
-            v-model="param.name"
+            v-model.trim="param.name"
             @change="searchChangeFunc"
         />
       </label>
@@ -21,7 +21,7 @@
             id="nickname"
             class="placeholder:text-sm"
             placeholder="오픈채팅방 닉네임을 입력해주세요"
-            v-model="param.nickname"
+            v-model.trim="param.nickname"
             @change="searchChangeFunc"
         />
       </label>
@@ -33,7 +33,7 @@
             inputmode="numeric"
             class="placeholder:text-sm"
             placeholder="'-'없이 입력해주세요 ex) 01012341234"
-            v-model="param.phone"
+            v-model.trim="param.phone"
             @change="searchChangeFunc"
         />
       </label>
@@ -47,7 +47,7 @@
             id="email"
             class="placeholder:text-sm email !w-1/3"
             placeholder="ID"
-            v-model="param.email"
+            v-model.trim="param.email"
             @change="searchChangeFunc"
         />
         <span>@gmail.com</span>
@@ -143,6 +143,7 @@ const handleSubmit = throttle(async () => {
     offline: param.location.offline ? "✓" : "",
   };
   try {
+    console.log(data)
     await axios.get(
         "https://script.google.com/macros/s/AKfycbyVl3fRUlQ5WeJQ-EwXie7Hcuxel_9QF5pTDsvAFpcQSvPnyhsT5i_ZM-XfYVqsI9HE0Q/exec",
         {
