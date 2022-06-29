@@ -85,7 +85,7 @@
     </form>
     <button
       class="content !w-20"
-      :class="{ disabled: submit }"
+      :class="{'disabled': submit }"
       :disabled="submit"
       @click="handleSubmit"
     >
@@ -97,6 +97,8 @@
 <script setup>
 import { ref, reactive } from "vue";
 import { throttle } from "lodash";
+import axios from "axios";
+import Swal from 'sweetalert2';
 
 const param = reactive({
   name: null,
