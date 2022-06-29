@@ -83,17 +83,20 @@
         </div>
       </div>
     </form>
-    <button class="content !w-20" :class="{'disabled': submit}" :disabled="submit" @click="handleSubmit">
+    <button
+      class="content !w-20"
+      :class="{ disabled: submit }"
+      :disabled="submit"
+      @click="handleSubmit"
+    >
       제출
     </button>
   </div>
 </template>
 
 <script setup>
-import {reactive, ref} from "vue";
+import { ref, reactive } from "vue";
 import { throttle } from "lodash";
-import axios from "axios";
-import Swal from 'sweetalert2';
 
 const param = reactive({
   name: null,
@@ -105,41 +108,39 @@ const param = reactive({
     offline: false,
   },
 });
-const submit = ref(true)
+const submit = ref(true);
 
-const searchChangeFunc = () =>{
-  const disabled = (()=>{
-    if(param.name === "") return true;
-    if(param.nickname === "") return true;
-    if(param.phone === "") return true;
-    if(param.email === "") return true;
-    if(!param.location.online && !param.location.offline) return true;
+const searchChangeFunc = () => {
+  const disabled = (() => {
+    if (param.name === "") return true;
+    if (param.nickname === "") return true;
+    if (param.phone === "") return true;
+    if (param.email === "") return true;
+    if (!param.location.online && !param.location.offline) return true;
     return false;
-  })()
+  })();
   submit.value = disabled;
-}
+};
 
-
-const handleSubmit = throttle( async () => {
-  console.log(submit.value)
-  submit.value = true
+const handleSubmit = throttle(async () => {
+  submit.value = true;
   const deadLine = new Date("2022-07-6T23:59:59").valueOf();
   const today = new Date();
   if (deadLine < today.valueOf()) {
     await Swal.fire("신청기간이 지났습니다.");
     return;
   }
-
   const data = {
+    sheet_name: "신청서",
     timeStamp: today.toLocaleString(),
     name: param.name,
     nickname: param.nickname,
     phone: param.phone,
     email: `${param.email}@gmail.com`,
-    online: param.location.online? "✓":"",
-    offline: param.location.offline? "✓":"",
+    online: param.location.online ? "✓" : "",
+    offline: param.location.offline ? "✓" : "",
   };
-  try{
+  try {
     await axios.get(
       "https://script.google.com/macros/s/AKfycbyVl3fRUlQ5WeJQ-EwXie7Hcuxel_9QF5pTDsvAFpcQSvPnyhsT5i_ZM-XfYVqsI9HE0Q/exec",
       {
@@ -153,16 +154,16 @@ const handleSubmit = throttle( async () => {
     }).then(() => {
       searchChangeFunc();
     });
-    submit.value = false
-  }catch(e){
-      Swal.fire({
-        title: `신청이 되지 않았습니다.\n지속된다면 컨퍼런스 운영진에게 연락주세요.`,
-        icon: "error",
-      }).then(() => {
-        searchChangeFunc();
-      });
+  } catch (e) {
+    console.error(e);
+    Swal.fire({
+      title: `신청이 되지 않았습니다.\n지속된다면 컨퍼런스 운영진에게 연락주세요.`,
+      icon: "error",
+    }).then(() => {
+      searchChangeFunc();
+    });
   }
-},100);
+}, 100);
 </script>
 
 <style scoped>
@@ -175,6 +176,6 @@ input[type="text"] {
 }
 
 .disabled {
-  @apply text-[#888888] bg-gray-300
+  @apply text-[#888888] bg-gray-300;
 }
 </style>
