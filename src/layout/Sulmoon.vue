@@ -83,6 +83,16 @@
         </div>
       </div>
     </form>
+
+    <label>
+      <a href="javascript:void(0)" @click="moveToAgree">
+        개인정보 수집 동의(클릭 시 전문)
+      </a>
+      <input
+        type="checkbox"
+      />
+    </label>
+
     <button
         class="content !w-20"
         :class="{disabled: submit }"
@@ -99,6 +109,7 @@ import {ref, reactive} from "vue";
 import {throttle} from "lodash";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import router from "@/router";
 
 const param = reactive({
   name: null,
@@ -166,6 +177,12 @@ const handleSubmit = throttle(async () => {
     });
   }
 }, 100);
+
+const moveToAgree = () => {
+  router.push({
+    name: "agree"
+  });
+}
 </script>
 
 <style scoped>

@@ -9,6 +9,14 @@ const routes = [
     children: [{path: '/main',component: () => import('@/view/Home.vue')}]
   },
 
+  {
+    path: '/agree',
+    name: 'agree',
+    redirect: '/agree',
+    component: () => import('@/view/Agree.vue'),
+    // children: [{path: '/main',component: () => import('@/view/Agree.vue')}]
+  },
+
 ]
 
 const router = createRouter({
